@@ -1,6 +1,4 @@
-# agregador-imposto-de-renda-excel
-Agregador de dados para a declaração de Imposto de Renda feito em Excel: menu de navegação, validações automáticas (CPF, datas, valores, listas), resumo de rendimentos, deduções e patrimônio, e verificação de pendências. Projeto do laboratório de Excel da DIO.
-[README_IR.md](https://github.com/user-attachments/files/33016102/README_IR.md)
+
 # Agregador de dados para o Imposto de Renda no Excel
 
 Planilha que reúne em um só lugar as informações que a declaração de Imposto de Renda pede: dados pessoais, dependentes, rendimentos, deduções, bens, dívidas e documentos. Cada entrada passa por validações, e uma aba de resumo mostra o que ainda está pendente. Projeto do laboratório de Excel da DIO.
@@ -102,9 +100,15 @@ Vi esses valores em reportagens publicadas até 2026, não na fonte oficial. Ant
 
 ## Aprendizados
 
-(Reescreva com suas palavras. Um ponto de partida:)
+O que mais me ocupou foi decidir o que a planilha bloqueia e o que ela só avisa. Data fora do ano-calendário e valor negativo são erro sem discussão, então a validação barra na digitação. Já educação acima do limite não é erro, porque o programa da Receita corta o excesso sozinho, e por isso virou aviso. Separar as duas coisas evitou uma planilha chata de usar, que trava por qualquer detalhe.
 
-O que mais pesou foi decidir o que bloqueia e o que apenas avisa. Data fora do ano e valor negativo são erro sem discussão, então a planilha barra. Já educação acima do limite não é erro, porque o programa da Receita limita sozinho, então virou aviso. Aprendi também que um menu de navegação bem feito reduz o esforço de quem usa mais do que qualquer fórmula, e que concentrar as verificações numa aba só facilita achar o que falta. Na próxima versão, incluiria o cálculo comparando declaração simplificada e completa.
+A parte mais trabalhosa foi a conferência do CPF. Montei a conta dos dígitos verificadores com SUMPRODUCT, MID e MOD, e testei com CPFs válidos, inválidos e sequências repetidas até a fórmula acertar nos três casos. Fiz o mesmo com os outros testes: preenchi dados errados de propósito e vi se o status e a contagem de pendências reagiam.
+
+Também aprendi que o menu pesa tanto quanto as fórmulas. Com um botão por aba, a contagem de pendências ao lado e o link "Ir para" no Resumo, quem abre o arquivo sabe o que falta sem procurar. No meu trabalho com indicadores eu já via isso: dado mal preenchido atrapalha mais do que dado ausente, e uma tela que mostra onde corrigir economiza muito retrabalho.
+
+Usei a IA como apoio para estruturar as abas e escrever as fórmulas mais longas, e conferi os resultados com cálculos feitos à parte. Os limites de dedução vieram de reportagens, não da fonte oficial, então deixei tudo editável na aba Parâmetros e avisei no README.
+
+Na próxima versão, incluiria o cálculo do imposto devido, comparando a declaração simplificada com a completa, e um quadro por ano para guardar os valores de anos anteriores.
 
 ## Estrutura do repositório
 
